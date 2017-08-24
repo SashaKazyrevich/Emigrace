@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<appSettings>
+
+		<add key="environment" value="development" />
+		<add key="database" value="server=.;database=Emigrace;integrated security=True;" />
+
+    	</appSettings>
+</configuration>

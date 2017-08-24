@@ -1,0 +1,25 @@
+﻿@using Emigrace.Models
+@model IEnumerable<PersonViewModel>
+
+<section class="brand">
+    <div class="container">
+        <div class="row">
+            <h1>Emigrace / Imigrace</h1>
+            <p class="lead">@Resource.lead</p>
+        </div>
+    </div>
+</section>
+<hr />
+<section class="main-body">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            @foreach (var item in Model)
+            {
+                @Html.Partial("_PersonCard", item)
+            }
+        </div>
+    </div>
+    <div class="col-md-offset-6" >
+        
+    </div>
+</section>

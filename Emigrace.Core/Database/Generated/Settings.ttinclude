@@ -1,0 +1,12 @@
+<#@ assembly name="$(ProjectDir)\\bin\\Debug\\Emigrace.Core.dll" #>
+
+<#+
+
+string Namespace = "Emigrace.Core.Database.Generated";
+string ResourceType = "Resources.Database"; //requires a Database.resx file 
+
+string ConnectionString = "Data Source=.;Initial Catalog=Emigrace;Integrated Security=True";
+string SchemaName = null;
+bool IncludeViews = false;
+
+#>
