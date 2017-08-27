@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archivarium", "Emigrace\Archivarium.csproj", "{B44F3222-A7FC-47FE-834D-914AC7CB34E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emigrace", "Emigrace\Emigrace.csproj", "{B44F3222-A7FC-47FE-834D-914AC7CB34E3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archivarium.Database", "Archivarium.Database", "{FEA29E66-B642-4C05-84BA-19304B40C4A7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Emigrace.Database", "Emigrace.Database", "{FEA29E66-B642-4C05-84BA-19304B40C4A7}"
 	ProjectSection(SolutionItems) = preProject
 		01.schema.sql = 01.schema.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archivarium.Core", "Emigrace.Core\Archivarium.Core.csproj", "{C2058821-935A-40BB-9DB3-2D90D48AA1C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emigrace.Core", "Emigrace.Core\Emigrace.Core.csproj", "{C2058821-935A-40BB-9DB3-2D90D48AA1C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

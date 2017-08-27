@@ -10,44 +10,33 @@
     <div class="col-sm-12 col-md-6">
         <form class="form-horizontal" action="@Url.Action("Index", "Indexing")" method="post">
             @Html.AntiForgeryToken()
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">@Resource.source</label>
-                <div class="col-sm-10">
-                    <div class="select-form">
-                        <div class="input-group-lg source">
-                            @Html.DropDownListFor(m => m.SourceId, Dropdown.Sources, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.SourceId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">@Resource.nameLatin</label>
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(m => m.Name_Latin , new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Name_Latin, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.NameLatin , new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.NameLatin, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="lastname">@Resource.lastnameLatin</label>
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(m => m.FamilyName_Latin, new { @class = "form-control"})
-                    @Html.ValidationMessageFor(m => m.FamilyName_Latin, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.FamilyNameLatin, new { @class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.FamilyNameLatin, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="nameCyrillic">@Resource.nameCyrillic</label>
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(m => m.Name_Cyrillic, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Name_Cyrillic, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.NameCyrillic, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.NameCyrillic, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="lastnameCyrillic">@Resource.lastnameCyrillic</label>
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(m => m.FamilyName_Cyrillic, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.FamilyName_Cyrillic, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.FamilyNameCyrillic, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FamilyNameCyrillic, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -55,6 +44,7 @@
 
         </form>
     </div>
+  
 </div>
 
 

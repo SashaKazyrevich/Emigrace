@@ -49,9 +49,9 @@
   <ItemGroup>
     <Compile Include="Configuration\Config.cs" />
     <Compile Include="Configuration\IConfig.cs" />
-    <Compile Include="Database\AffixxTransactionScope.cs" />
     <Compile Include="Database\Cache.cs" />
     <Compile Include="Database\DapperDynamicParameters.cs" />
+    <Compile Include="Database\EmigraceTransactionScope.cs" />
     <Compile Include="Database\Generated\Database.Tables.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>

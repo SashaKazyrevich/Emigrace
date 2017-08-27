@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArchivesController.cs" />
     <Compile Include="Controllers\CultureController.cs" />
     <Compile Include="Controllers\EmigraceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -179,6 +180,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ArchiveViewModel.cs" />
     <Compile Include="Models\Dropdown.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IndexingViewModel.cs" />
@@ -265,13 +267,14 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\_PersonCard.cshtml" />
     <Content Include="Views\Indexing\Index.cshtml" />
+    <Content Include="Views\Archives\Index.cshtml" />
+    <Content Include="Views\Archives\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Resx\" />
     <Folder Include="Services\Algorithms\" />
     <Folder Include="Services\Identity\" />
-    <Folder Include="Views\CheckoutSwitchedOff\" />
     <Folder Include="Views\Culture\" />
     <Folder Include="Views\Emigrace\" />
   </ItemGroup>
@@ -301,9 +304,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Emigrace.Core\Archivarium.Core.csproj">
+    <ProjectReference Include="..\Emigrace.Core\Emigrace.Core.csproj">
       <Project>{c2058821-935a-40bb-9db3-2d90d48aa1c0}</Project>
-      <Name>Archivarium.Core</Name>
+      <Name>Emigrace.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,55 @@
+﻿@using System.Security.Policy
+@model Emigrace.Models.ArchiveViewModel
+
+    @{
+        ViewBag.Title = "Archives";
+        
+    }
+
+    <h2>Fill this form</h2>
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <form class="form-horizontal" action="@Url.Action("Create", "Archives")" method="post">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Archive name</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Archive adress</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Adress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Adress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Country</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Phone number</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Web pages</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.WebPages, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.WebPages, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-btn">
+                <button type="submit" class="btn btn-primary btn-block">Submit<span class="fa fa-long-arrow-right icon-right"></span></button>
+            </div>
+        </form>
+
+</div>
+</div>

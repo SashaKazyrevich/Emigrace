@@ -18,8 +18,7 @@ namespace Emigrace.Core.Database.Generated
 
 		public partial class ArchivalDocument : TableEntity
 		{
-			public string Archive { get; set; }
-			public string Place { get; set; }
+			public long ArchiveId { get; set; }
 			public int FondNumber { get; set; }
 			public string FondName { get; set; }
 			public int InventoryNumber { get; set; }
@@ -29,8 +28,8 @@ namespace Emigrace.Core.Database.Generated
 			public override long Id { get; set; }
 
 			internal override void EntitySetId(long id) {  Id = id; }
-			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalDocuments([Archive], [DocumentNumber], [FondName], [FondNumber], [InventoryNumber], [Language], [Place], [TimeInterval]) VALUES (@Archive, @DocumentNumber, @FondName, @FondNumber, @InventoryNumber, @Language, @Place, @TimeInterval)";} }
-			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalDocuments SET [Archive] = @Archive, [DocumentNumber] = @DocumentNumber, [FondName] = @FondName, [FondNumber] = @FondNumber, [InventoryNumber] = @InventoryNumber, [Language] = @Language, [Place] = @Place, [TimeInterval] = @TimeInterval  WHERE [Id] = @Id"; } }
+			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalDocuments([ArchiveId], [DocumentNumber], [FondName], [FondNumber], [InventoryNumber], [Language], [TimeInterval]) VALUES (@ArchiveId, @DocumentNumber, @FondName, @FondNumber, @InventoryNumber, @Language, @TimeInterval)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalDocuments SET [ArchiveId] = @ArchiveId, [DocumentNumber] = @DocumentNumber, [FondName] = @FondName, [FondNumber] = @FondNumber, [InventoryNumber] = @InventoryNumber, [Language] = @Language, [TimeInterval] = @TimeInterval  WHERE [Id] = @Id"; } }
 
 			public override bool Equals(object other)
 			{
@@ -46,10 +45,7 @@ namespace Emigrace.Core.Database.Generated
 				if (Id != entity.Id) {
 					return false;
 				}
-				if (Archive != entity.Archive) {
-					return false;
-				}
-				if (Place != entity.Place) {
+				if (ArchiveId != entity.ArchiveId) {
 					return false;
 				}
 				if (FondNumber != entity.FondNumber) {
@@ -78,14 +74,73 @@ namespace Emigrace.Core.Database.Generated
 				unchecked {
 					const int randomPrime = 397;
 					int hashCode = Id.GetHashCode();
-					hashCode = (hashCode*randomPrime) ^ (Archive != null ? Archive.GetHashCode() : 0);
-					hashCode = (hashCode*randomPrime) ^ (Place != null ? Place.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ ArchiveId.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ FondNumber.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ (FondName != null ? FondName.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ InventoryNumber.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ DocumentNumber.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ (TimeInterval != null ? TimeInterval.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (Language != null ? Language.GetHashCode() : 0);
+					return hashCode;
+				}
+			}
+		}
+		
+		public partial class Archive : TableEntity
+		{
+			public string Name { get; set; }
+			public string Adress { get; set; }
+			public string Country { get; set; }
+			public string Phone { get; set; }
+			public string WebPages { get; set; }
+			public override long Id { get; set; }
+
+			internal override void EntitySetId(long id) {  Id = id; }
+			internal override string EntityInsertSql { get { return "INSERT INTO Archives([Adress], [Country], [Name], [Phone], [WebPages]) VALUES (@Adress, @Country, @Name, @Phone, @WebPages)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE Archives SET [Adress] = @Adress, [Country] = @Country, [Name] = @Name, [Phone] = @Phone, [WebPages] = @WebPages  WHERE [Id] = @Id"; } }
+
+			public override bool Equals(object other)
+			{
+				if (ReferenceEquals(this, other)) {
+					return true;
+				}
+
+				var entity = other as Archive;
+				if (entity == null) {
+					return false;
+				}
+
+				if (Id != entity.Id) {
+					return false;
+				}
+				if (Name != entity.Name) {
+					return false;
+				}
+				if (Adress != entity.Adress) {
+					return false;
+				}
+				if (Country != entity.Country) {
+					return false;
+				}
+				if (Phone != entity.Phone) {
+					return false;
+				}
+				if (WebPages != entity.WebPages) {
+					return false;
+				}
+				return true;
+			}
+
+			public override int GetHashCode()
+			{
+				unchecked {
+					const int randomPrime = 397;
+					int hashCode = Id.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ (Name != null ? Name.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ (Adress != null ? Adress.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ (Country != null ? Country.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ (Phone != null ? Phone.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ (WebPages != null ? WebPages.GetHashCode() : 0);
 					return hashCode;
 				}
 			}
@@ -410,8 +465,10 @@ namespace Emigrace.Core.Database.Generated
 		{
 			public long SourceTypeID { get; set; }
 			public long SourceId { get; set; }
-			public string Name { get; set; }
-			public string FamilyName { get; set; }
+			public string Name_Latin { get; set; }
+			public string FamilyName_Latin { get; set; }
+			public string Name_Cyrillic { get; set; }
+			public string FamilyName_Cyrillic { get; set; }
 			public string Sex { get; set; }
 			public string FatherName { get; set; }
 			public DateTime? DateOfBirth { get; set; }
@@ -429,8 +486,8 @@ namespace Emigrace.Core.Database.Generated
 			public override long Id { get; set; }
 
 			internal override void EntitySetId(long id) {  Id = id; }
-			internal override string EntityInsertSql { get { return "INSERT INTO Persons([Citizenship], [DateOfBirth], [FamilyName], [FatherId], [FatherName], [MaritalStatus], [MotherId], [Name], [Notice], [PartnerId], [PhotoNumber], [PlaceOfBirthId], [PlaceOfEmigrationId], [PlaceOfLivingId], [Profession], [Sex], [SourceId], [SourceTypeID]) VALUES (@Citizenship, @DateOfBirth, @FamilyName, @FatherId, @FatherName, @MaritalStatus, @MotherId, @Name, @Notice, @PartnerId, @PhotoNumber, @PlaceOfBirthId, @PlaceOfEmigrationId, @PlaceOfLivingId, @Profession, @Sex, @SourceId, @SourceTypeID)";} }
-			internal override string EntityUpdateSql {  get { return "UPDATE Persons SET [Citizenship] = @Citizenship, [DateOfBirth] = @DateOfBirth, [FamilyName] = @FamilyName, [FatherId] = @FatherId, [FatherName] = @FatherName, [MaritalStatus] = @MaritalStatus, [MotherId] = @MotherId, [Name] = @Name, [Notice] = @Notice, [PartnerId] = @PartnerId, [PhotoNumber] = @PhotoNumber, [PlaceOfBirthId] = @PlaceOfBirthId, [PlaceOfEmigrationId] = @PlaceOfEmigrationId, [PlaceOfLivingId] = @PlaceOfLivingId, [Profession] = @Profession, [Sex] = @Sex, [SourceId] = @SourceId, [SourceTypeID] = @SourceTypeID  WHERE [Id] = @Id"; } }
+			internal override string EntityInsertSql { get { return "INSERT INTO Persons([Citizenship], [DateOfBirth], [FamilyName_Cyrillic], [FamilyName_Latin], [FatherId], [FatherName], [MaritalStatus], [MotherId], [Name_Cyrillic], [Name_Latin], [Notice], [PartnerId], [PhotoNumber], [PlaceOfBirthId], [PlaceOfEmigrationId], [PlaceOfLivingId], [Profession], [Sex], [SourceId], [SourceTypeID]) VALUES (@Citizenship, @DateOfBirth, @FamilyName_Cyrillic, @FamilyName_Latin, @FatherId, @FatherName, @MaritalStatus, @MotherId, @Name_Cyrillic, @Name_Latin, @Notice, @PartnerId, @PhotoNumber, @PlaceOfBirthId, @PlaceOfEmigrationId, @PlaceOfLivingId, @Profession, @Sex, @SourceId, @SourceTypeID)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE Persons SET [Citizenship] = @Citizenship, [DateOfBirth] = @DateOfBirth, [FamilyName_Cyrillic] = @FamilyName_Cyrillic, [FamilyName_Latin] = @FamilyName_Latin, [FatherId] = @FatherId, [FatherName] = @FatherName, [MaritalStatus] = @MaritalStatus, [MotherId] = @MotherId, [Name_Cyrillic] = @Name_Cyrillic, [Name_Latin] = @Name_Latin, [Notice] = @Notice, [PartnerId] = @PartnerId, [PhotoNumber] = @PhotoNumber, [PlaceOfBirthId] = @PlaceOfBirthId, [PlaceOfEmigrationId] = @PlaceOfEmigrationId, [PlaceOfLivingId] = @PlaceOfLivingId, [Profession] = @Profession, [Sex] = @Sex, [SourceId] = @SourceId, [SourceTypeID] = @SourceTypeID  WHERE [Id] = @Id"; } }
 
 			public override bool Equals(object other)
 			{
@@ -452,10 +509,16 @@ namespace Emigrace.Core.Database.Generated
 				if (SourceId != entity.SourceId) {
 					return false;
 				}
-				if (Name != entity.Name) {
+				if (Name_Latin != entity.Name_Latin) {
 					return false;
 				}
-				if (FamilyName != entity.FamilyName) {
+				if (FamilyName_Latin != entity.FamilyName_Latin) {
+					return false;
+				}
+				if (Name_Cyrillic != entity.Name_Cyrillic) {
+					return false;
+				}
+				if (FamilyName_Cyrillic != entity.FamilyName_Cyrillic) {
 					return false;
 				}
 				if (Sex != entity.Sex) {
@@ -510,8 +573,10 @@ namespace Emigrace.Core.Database.Generated
 					int hashCode = Id.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ SourceTypeID.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ SourceId.GetHashCode();
-					hashCode = (hashCode*randomPrime) ^ (Name != null ? Name.GetHashCode() : 0);
-					hashCode = (hashCode*randomPrime) ^ (FamilyName != null ? FamilyName.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ (Name_Latin != null ? Name_Latin.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ (FamilyName_Latin != null ? FamilyName_Latin.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ (Name_Cyrillic != null ? Name_Cyrillic.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ (FamilyName_Cyrillic != null ? FamilyName_Cyrillic.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (Sex != null ? Sex.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (FatherName != null ? FatherName.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (DateOfBirth != null ? DateOfBirth.GetHashCode() : 0);

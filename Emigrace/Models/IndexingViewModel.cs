@@ -8,19 +8,19 @@ namespace Emigrace.Models
         [Required]
         public long SourceId { get; set; }
 
-        [Display(Name = "Name_Latin")]
-        public string Name_Latin { get; set; }
+        [Display(Name = "NameLatin")]
+        public string NameLatin { get; set; }
 
         [Required]
-        [Display(Name = "FamilyName_Latin")]
-        public string FamilyName_Latin { get; set; }
+        [Display(Name = "FamilyNameLatin")]
+        public string FamilyNameLatin { get; set; }
 
-        [Display(Name = "Name_Cyrillic")]
-        public string Name_Cyrillic { get; set; }
+        [Display(Name = "NameCyrillic")]
+        public string NameCyrillic { get; set; }
 
         [Required]
-        [Display(Name = "FamilyName_Cyrillic")]
-        public string FamilyName_Cyrillic { get; set; }
+        [Display(Name = "FamilyNameCyrillic")]
+        public string FamilyNameCyrillic { get; set; }
 
        
     }
