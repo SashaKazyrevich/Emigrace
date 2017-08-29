@@ -1,15 +1,18 @@
 ﻿$projectName='EMI'
 $log = git log --merges --oneline --decorate 
 $split = $log -split "`n"
-$pattern = "\/(\w+)\/(\w+\-\d+)"
-$result = ""
+$branchpattern = "\/(\w+)\/(\w+\-\d+)"
+$tagpattern="\btag\b\:\s(\d+\.\d+\.\d+)"
+$release = ""
+$changelog = New-Object 'System.Collections.ArrayList'
 $features = New-Object 'System.Collections.Generic.HashSet[string]'
 $hotfixes = New-Object 'System.Collections.Generic.HashSet[string]'
 $bugfixes = New-Object 'System.Collections.Generic.HashSet[string]'
+$tags = ""
 
 for($i=$split.Length-1; $i -ge 0; $i--)
 {
-  if (-not ($split[$i] -match $pattern))
+  if (-not ($split[$i] -match $branchpattern))
   {
     continue;
   }
@@ -21,7 +24,38 @@ for($i=$split.Length-1; $i -ge 0; $i--)
     'hotfix' {$hotfixes.Add($matches[2])}
   }
 
+  if (-not ($split[$i] -match $tagpattern))
+  {
+    continue;
+  }
 
+  $tag = $matches[1] 
+  $release = "Release $tag" 
+  if ($features.Count -gt 0) {
+    
+    $release += "`n Features:"
+    foreach($feature in $features){
+    $release += "`n * $feature"}
+  }
+  if ($bugfixes.Count -gt 0) {
+    $release += "`n Bugfixes:"
+    foreach($bugfix in $bugfixes){
+    $release += "`n * $bugfix"}
+     
+  }
+  if ($hotfixes.Count -gt 0) {
+    $release += "`n Hotfixes:"
+    foreach($hotfix in $hotfixes){
+    $release += "`n * $hotfix"}
+    
+   }
+     
+  $changelog.Add($release)
+
+  
+  $features.Clear()
+  $bugfixes.Clear()
+  $hotfixes.Clear()
 }
 
 
