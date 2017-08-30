@@ -1,5 +1,5 @@
 ﻿$projectName='EMI'
-$log = git log --merges --oneline --decorate 
+$log = git log --merges --oneline --decorate --reverse 
 $split = $log -split "`n"
 $branchpattern = "\/(\w+)\/(\w+\-\d+)"
 $tagpattern="\btag\b\:\s(\d+\.\d+\.\d+)"
@@ -10,7 +10,7 @@ $hotfixes = New-Object 'System.Collections.Generic.HashSet[string]'
 $bugfixes = New-Object 'System.Collections.Generic.HashSet[string]'
 $tags = ""
 
-for($i=$split.Length-1; $i -ge 0; $i--)
+for($i=0; $i -le $split.Length-1; $i++)
 {
   if (-not ($split[$i] -match $branchpattern))
   {
