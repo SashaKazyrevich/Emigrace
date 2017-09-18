@@ -9,6 +9,7 @@ $features = New-Object 'System.Collections.Generic.HashSet[string]'
 $hotfixes = New-Object 'System.Collections.Generic.HashSet[string]'
 $bugfixes = New-Object 'System.Collections.Generic.HashSet[string]'
 $tags = ""
+Out-File changelog.md
 
 for($i=0; $i -le $split.Length-1; $i++)
 {
@@ -30,33 +31,37 @@ for($i=0; $i -le $split.Length-1; $i++)
   }
 
   $tag = $matches[1] 
-  $release = "Release $tag" 
+  $release = "# Release $tag" 
+  
   if ($features.Count -gt 0) {
     
     $release += "`n Features:"
     foreach($feature in $features){
-    $release += "`n * $feature"}
+    $release += "`n     * $feature"}
   }
   if ($bugfixes.Count -gt 0) {
     $release += "`n Bugfixes:"
     foreach($bugfix in $bugfixes){
-    $release += "`n * $bugfix"}
+    $release += "`n     * $bugfix"}
      
   }
   if ($hotfixes.Count -gt 0) {
     $release += "`n Hotfixes:"
     foreach($hotfix in $hotfixes){
-    $release += "`n * $hotfix"}
+    $release += "`n     * $hotfix"}
     
    }
      
   $changelog.Add($release)
-
+  echo $changelog >>changelog.md
+  
   
   $features.Clear()
   $bugfixes.Clear()
   $hotfixes.Clear()
 }
+
+markdownb changelog.md 
 
 
 
