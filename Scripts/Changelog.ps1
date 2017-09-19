@@ -61,7 +61,6 @@ for($i=0; $i -le $split.Length-1; $i++)
   $hotfixes.Clear()
 }
 
-markdownb changelog.md 
 
 
 
