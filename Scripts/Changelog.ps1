@@ -1,4 +1,3 @@
-﻿$projectName='EMI'
 $log = git log --merges --oneline --decorate --reverse 
 $split = $log -split "`n"
 $branchpattern = "\/(\w+)\/(\w+\-\d+)"
