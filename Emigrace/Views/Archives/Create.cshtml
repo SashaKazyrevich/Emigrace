@@ -6,9 +6,11 @@
         
     }
 
-    <h2>Fill this form</h2>
-<div class="row">
+    
+<div class="container">
+<section class="row row-table">
     <div class="col-sm-12 col-md-6">
+        <h2>Fill this form</h2>
         <form class="form-horizontal" action="@Url.Action("Create", "Archives")" method="post">
             @Html.AntiForgeryToken()
             <div class="form-group">
@@ -52,4 +54,5 @@
         </form>
 
 </div>
+</section>
 </div>

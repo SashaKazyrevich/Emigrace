@@ -1,13 +1,19 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Bitter','Times New Roman', Times, serif;
+    background-color: lavender;
 
 }
 
 .main-body {
     padding-left:15px;
     padding-right:15px;
+}
+
+.row-table {
+    padding:1em;
+    color: white;
 }
 
 h1{
@@ -83,4 +89,10 @@ textarea {
     .lead {
         display: none;
     }
+}
+
+/*Archives*/
+
+.result-form, .search-form{
+    padding: 2em, 1em;
 }
