@@ -1,5 +1,4 @@
-﻿param([string]$rel="0.0.0")
-$projectName='EMI'
+﻿$projectName='EMI'
 $log = git log --merges --oneline --decorate --reverse
 $split = $log -split "`n"
 $branchpattern = "\/(\w+)\/(\w+\-\d+)"
@@ -32,7 +31,6 @@ for($i=0; $i -le $split.Length-1; $i++)
   }
 
   $tag = $matches[1] 
-
   $release = "# Release $tag" 
   
   if ($features.Count -gt 0) {
