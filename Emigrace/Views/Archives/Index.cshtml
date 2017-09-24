@@ -4,11 +4,29 @@
     ViewBag.Title = "Archives list";
 }
 
-<h2>Add new archive</h2>
-<div class="row">
-    <div class="col-md-2">
-        <div class="form-btn">
-            <a href="@Url.Action("Create")" class="btn btn-primary btn-block">New archive</a>
+<div class="container">
+    <section class="row">
+
+    </section>
+    <section class="row row-table">
+        <div class="col-sm-12 col-md-4 search-form">
+            <h4>Add new archive</h4>
+               <div class="form-btn">
+                    <a href="@Url.Action("Create")" class="btn btn-primary btn-block">New archive</a>
+               </div>
         </div>
-    </div>
+        <div class="col-sm-12 col-md-8">
+            <div class="result-form">
+                <ul>
+                    <li>
+                       @foreach(var archive in Model)
+                       {
+                          <p>Hello, git</p>
+                           /**archive.Name**/
+                       }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
 </div>
