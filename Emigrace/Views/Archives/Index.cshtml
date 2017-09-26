@@ -21,7 +21,7 @@
                     @foreach (var item in Model)
                     {
                     <li>
-                        <a href="" >@item.Name</a>
+                        <a href="@Url.Action("ShowArchivePage", "Archives", new { id = @item.Id} )" >@item.Name</a>
                         <table>
                             <tbody>
                                 <tr>

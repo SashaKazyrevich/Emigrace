@@ -270,6 +270,7 @@
     <Content Include="Views\Indexing\Index.cshtml" />
     <Content Include="Views\Archives\Index.cshtml" />
     <Content Include="Views\Archives\Create.cshtml" />
+    <Content Include="Views\Archives\ShowArchivePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
