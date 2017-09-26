@@ -14,16 +14,32 @@ namespace Emigrace.Services
         {
             var query = @"
                 SELECT 
+                    arch.Id,
+                    arch.Name,
+                    arch.Adress,
+                    arch.Country
+                FROM Archives arch
+                ORDER BY arch.Name
+            ";
+
+            return new Repository().SelectAdHoc<ArchiveViewModel>(query);
+        }
+
+        public ArchiveViewModel ShowArchive(int id)
+        {
+            var query = @"
+                SELECT
+                    arch.Id,
                     arch.Name,
                     arch.Adress,
                     arch.Country,
                     arch.Phone,
                     arch.WebPages
                 FROM Archives arch
-                ORDER BY arch.Name
+                WHERE arch.Id = @id
             ";
 
-            return new Repository().SelectAdHoc<ArchiveViewModel>(query);
+            return new Repository().SelectAdHoc<ArchiveViewModel>(query, new { id }).SingleOrDefault();
         }
     }
 }
