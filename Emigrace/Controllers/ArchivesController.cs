@@ -23,6 +23,17 @@ namespace Emigrace.Controllers
             return View();
         }
 
+        public ActionResult Remove()
+        {
+            return View();
+        }
+
+        public ActionResult Update()
+        {
+            return View();
+        }
+
+
         //public ActionResult Save(ArchiveViewModel model)
         //{
         //    return View();

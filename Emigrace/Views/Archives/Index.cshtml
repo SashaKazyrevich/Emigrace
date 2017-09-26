@@ -3,33 +3,39 @@
 @{
     ViewBag.Title = "Archives list";
 }
-<div id="test">
-    this is a test!
-</div>
-
 <div class="container">
     <section class="row">
 
     </section>
     <section class="row row-table">
         <div class="col-sm-12 col-md-4 search-form">
-               <div class="form-btn">
-                    <a href="@Url.Action("Create")" class="btn btn-primary btn-block">Add new archive</a>
-               </div>
+
+               
         </div>
         <div class="col-sm-12 col-md-8">
             <div class="result-form">
+                <div class="form-btn"id="new-archive">
+                    <a href="@Url.Action("Create")" class="btn btn-primary btn-block">Add new archive</a>
+                </div>
                 <ul id="search-result">
+                    @foreach (var item in Model)
+                    {
                     <li>
-                      @foreach (var item in Model)
-                      {
                         <a href="" >@item.Name</a>
-                        <h5>@item.Adress</h5>
-                        <h5>@item.Country</h5>
-
-                      }
-                          
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="table-columns">Adress:</td>
+                                    <td>@item.Adress</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-columns">Country:</td>
+                                    <td>@item.Country</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </li>
+                    }
                 </ul>
             </div>
         </div>

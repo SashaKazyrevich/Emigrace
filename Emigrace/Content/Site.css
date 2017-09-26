@@ -101,13 +101,25 @@ textarea {
 }
 
 ul#search-result li {
-    padding: 0;
-     color: red;
+    padding: 6px 0px 6px 0px;
     background-color:white;
     list-style-type: none;
+    border-bottom: 1px solid #ddd;
+}
+
+ul#search-result li:hover {
+    background-color:#eee;
 }
 
 ul#search-result a{
     font-family: 'Futura','Times New Roman', Times, serif;
-    font-weight:400;
+    font-size:large;
 }
+
+#new-archive.form-btn {
+    padding-bottom:4px;
+    width: 50%;
+}
+
+
+
