@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Emigrace.Models;
+using Emigrace.Services;
 
 namespace Emigrace.Controllers
 {
@@ -12,7 +13,9 @@ namespace Emigrace.Controllers
         // GET: Archives
         public ActionResult Index()
         {
-            return View();
+            var archives = new ArchiveService().SelectArchives();
+
+            return View(archives);
         }
 
         public ActionResult Create()

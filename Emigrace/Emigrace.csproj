@@ -203,6 +203,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.ru.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\ArchiveService.cs" />
     <Compile Include="Services\LibraryService.cs" />
     <Compile Include="Services\SourceService.cs" />
     <Compile Include="Startup.cs" />

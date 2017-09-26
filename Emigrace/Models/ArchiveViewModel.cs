@@ -5,6 +5,7 @@ namespace Emigrace.Models
 {
     public class ArchiveViewModel 
     {
+       
         [Required]
         public string Name { get; set; }
 
