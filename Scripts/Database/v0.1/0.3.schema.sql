@@ -23,9 +23,9 @@ BEGIN
 		Id BIGINT CONSTRAINT PK_ArchivalDocuments_Id PRIMARY KEY IDENTITY(1,1) NOT NULL,
 		ArchiveId BIGINT NOT NULL,
 	        CONSTRAINT FK_ArchivalDocuments_ArchiveId FOREIGN KEY(ArchiveId) REFERENCES Archives(Id),
-		FondNumber int NOT NULL,
+		FondNumber NVARCHAR NOT NULL,
 		FondName NVARCHAR(100) NULL,
-		InventoryNumber int NOT NULL,
+		InventoryNumber int NULL,
 		DocumentNumber int NOT NULL,
 		TimeInterval VARCHAR(50),
 		Language CHAR(10) NULL 
