@@ -19,9 +19,9 @@ namespace Emigrace.Core.Database.Generated
 		public partial class ArchivalDocument : TableEntity
 		{
 			public long ArchiveId { get; set; }
-			public int FondNumber { get; set; }
+			public string FondNumber { get; set; }
 			public string FondName { get; set; }
-			public int InventoryNumber { get; set; }
+			public int? InventoryNumber { get; set; }
 			public int DocumentNumber { get; set; }
 			public string TimeInterval { get; set; }
 			public string Language { get; set; }
@@ -75,9 +75,9 @@ namespace Emigrace.Core.Database.Generated
 					const int randomPrime = 397;
 					int hashCode = Id.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ ArchiveId.GetHashCode();
-					hashCode = (hashCode*randomPrime) ^ FondNumber.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ (FondNumber != null ? FondNumber.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (FondName != null ? FondName.GetHashCode() : 0);
-					hashCode = (hashCode*randomPrime) ^ InventoryNumber.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ (InventoryNumber != null ? InventoryNumber.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ DocumentNumber.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ (TimeInterval != null ? TimeInterval.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (Language != null ? Language.GetHashCode() : 0);
