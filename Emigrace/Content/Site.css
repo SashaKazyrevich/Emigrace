@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    font-family: 'Bitter','Times New Roman', Times, serif;
+    font-family: 'Rubic', sans-serif;
     background-color: lavender;
 }
 
@@ -112,7 +112,7 @@ ul#search-result li:hover {
 }
 
 ul#search-result a{
-    font-family: 'Futura','Times New Roman', Times, serif;
+    font-family: 'Rubic', sans-serif;
     font-size:large;
 }
 
@@ -122,4 +122,67 @@ ul#search-result a{
 }
 
 
+/*Archive*/
+
+.row-name {
+    background-color:white;
+    padding:0px 0px 6px 6px;
+}
+
+.row-contacts {
+    background-color:white;
+    padding:0px 0px 6px 6px;
+    font-size:larger;
+    line-height:1;
+    margin-bottom:2%;
+}
+
+.collections-table {
+    background-color:white;
+    padding:0px 0px 6px 6px;
+}
+
+h5.row-contacts {
+    font-weight: bold;
+}
+
+table.numbered-table{
+    border-collapse:collapse;
+
+}
+
+table.numbered-table tr {
+    background-color:#efefef;
+    border-bottom: 1px solid #ddd;
+}
+
+table.numbered-table th {
+    font-weight: normal;
+    text-align: left;
+    padding:1em 0.5em;
+    font-size:larger;
+     
+}
+
+table.numbered-table caption {
+    font-size: 30px;
+    margin-top:20px;
+    margin-bottom: 10px;
+    text-align:left;
+}
+
+table.numbered-table tbody tr {
+    background-color:white;
+    border: none;
+}
+
+table.numbered-table.collections-row th {
+    border-top: 1px solid #ddd;
+}
+
+table.numbered-table.collections-row td {
+    vertical-align: top;
+    height:100%;
+    overflow: hidden;
+}
 

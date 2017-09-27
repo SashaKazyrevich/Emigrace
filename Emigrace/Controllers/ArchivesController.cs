@@ -36,7 +36,7 @@ namespace Emigrace.Controllers
         public ActionResult ShowArchivePage(int id)
         {
             var archive = new ArchiveService().ShowArchive(id);
-            return View();
+            return View(archive);
         }
         //public ActionResult Save(ArchiveViewModel model)
         //{

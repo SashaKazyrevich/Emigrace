@@ -4,5 +4,66 @@
     ViewBag.Title = "Archive";
 }
 
-<h2>Archive</h2>
+<div class="container">
+    <section class="row row-name">
+        <div class="col-md-12">
+            <h2>@Model.Name</h2>
+        </div>
+    </section>
+    <section class="row row-contacts">
+        <div class="col-md-12">
+            <p>@Model.Adress</p>
+            <p>@Model.Country</p>
+            <br />
+            <h5>
+                <b>
+                    Telephone:
+                </b>
+            </h5>
+            <p>@Model.Phone</p>
+            <br />
+            <h5>
+                <b>
+                    Web-page:
+                </b>
+            </h5>
+            <p>@Model.WebPages</p>
+        </div>
+    </section>
+    <section class="row collections-table">
+        <div class="col-md-12">
+            <table id="collections" class="numbered-table">
+                <caption>Collections</caption>
+                <colgroup>
+                    <col style="width:10%" />
+                    <col style="width:40%" />
+                    <col style="width:30%" />
+                    <col style="width:30%" />
+                    <col style="width:30%" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">&nbsp;</th>
+                        <th scope="col">Fond name</th>
+                        <th scope="col">Requisites</th>
+                        <th scope="col">Time interval</th>
+                        <th scope="col">Language</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="collection-row">
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </tbody>
+            </table>
+           
+        </div>
+
+    </section>
+</div>
+
 
