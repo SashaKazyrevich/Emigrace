@@ -56,13 +56,10 @@ BEGIN
         Id BIGINT CONSTRAINT PK_ArchivalDocumentPages_Id PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	DocumentId BIGINT NOT NULL,
 	CONSTRAINT FK_ArchivalDocumentPages_DocumentId FOREIGN KEY(DocumentId) REFERENCES ArchivalDocuments(Id),
-	PhotoNumber string NULL
+	PhotoNumber NVARCHAR NULL
 	)
 END
-GO        
-
-
-
+GO
 
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Books')
 BEGIN
@@ -86,7 +83,7 @@ BEGIN
         Id BIGINT CONSTRAINT PK_BookPages_Id PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	BookId BIGINT NOT NULL,
 	CONSTRAINT FK_BookPages_BookId FOREIGN KEY(BookId) REFERENCES Books(Id),
-	PhotoNumber string NULL
+	PhotoNumber NVARCHAR NULL
 	)
 END
 GO
