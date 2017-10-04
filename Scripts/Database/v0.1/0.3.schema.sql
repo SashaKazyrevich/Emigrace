@@ -25,6 +25,7 @@ BEGIN
 		FondNumber NVARCHAR(50) NOT NULL,
 		FondName NVARCHAR(100) NULL,
                 ArchiveId BIGINT NOT NULL,
+		TimeInterval VARCHAR(50),
 	        CONSTRAINT FK_ArchivalFonds_ArchiveId FOREIGN KEY(ArchiveId) REFERENCES Archives(Id)
 		)
 END
@@ -40,8 +41,7 @@ BEGIN
 	        CONSTRAINT FK_ArchivalDocuments_FondId FOREIGN KEY(FondId) REFERENCES ArchivalFonds(Id),
 		InventoryNumber int NULL,
 		FileNumber int NULL,
-		DocumentNumber int NOT NULL,                            
-		TimeInterval VARCHAR(50),
+		DocumentNumber int NOT NULL,                         
 		Language CHAR(10) NULL 
 		
 	)

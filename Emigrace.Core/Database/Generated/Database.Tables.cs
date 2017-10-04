@@ -16,20 +16,64 @@ namespace Emigrace.Core.Database.Generated
 			public abstract long Id { get; set; }
 		}
 
+		public partial class ArchivalDocumentPage : TableEntity
+		{
+			public long DocumentId { get; set; }
+			public string PhotoNumber { get; set; }
+			public override long Id { get; set; }
+
+			internal override void EntitySetId(long id) {  Id = id; }
+			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalDocumentPages([DocumentId], [PhotoNumber]) VALUES (@DocumentId, @PhotoNumber)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalDocumentPages SET [DocumentId] = @DocumentId, [PhotoNumber] = @PhotoNumber  WHERE [Id] = @Id"; } }
+
+			public override bool Equals(object other)
+			{
+				if (ReferenceEquals(this, other)) {
+					return true;
+				}
+
+				var entity = other as ArchivalDocumentPage;
+				if (entity == null) {
+					return false;
+				}
+
+				if (Id != entity.Id) {
+					return false;
+				}
+				if (DocumentId != entity.DocumentId) {
+					return false;
+				}
+				if (PhotoNumber != entity.PhotoNumber) {
+					return false;
+				}
+				return true;
+			}
+
+			public override int GetHashCode()
+			{
+				unchecked {
+					const int randomPrime = 397;
+					int hashCode = Id.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ DocumentId.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ (PhotoNumber != null ? PhotoNumber.GetHashCode() : 0);
+					return hashCode;
+				}
+			}
+		}
+		
 		public partial class ArchivalDocument : TableEntity
 		{
-			public long ArchiveId { get; set; }
-			public string FondNumber { get; set; }
-			public string FondName { get; set; }
+			public long FondId { get; set; }
 			public int? InventoryNumber { get; set; }
+			public int? FileNumber { get; set; }
 			public int DocumentNumber { get; set; }
 			public string TimeInterval { get; set; }
 			public string Language { get; set; }
 			public override long Id { get; set; }
 
 			internal override void EntitySetId(long id) {  Id = id; }
-			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalDocuments([ArchiveId], [DocumentNumber], [FondName], [FondNumber], [InventoryNumber], [Language], [TimeInterval]) VALUES (@ArchiveId, @DocumentNumber, @FondName, @FondNumber, @InventoryNumber, @Language, @TimeInterval)";} }
-			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalDocuments SET [ArchiveId] = @ArchiveId, [DocumentNumber] = @DocumentNumber, [FondName] = @FondName, [FondNumber] = @FondNumber, [InventoryNumber] = @InventoryNumber, [Language] = @Language, [TimeInterval] = @TimeInterval  WHERE [Id] = @Id"; } }
+			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalDocuments([DocumentNumber], [FileNumber], [FondId], [InventoryNumber], [Language], [TimeInterval]) VALUES (@DocumentNumber, @FileNumber, @FondId, @InventoryNumber, @Language, @TimeInterval)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalDocuments SET [DocumentNumber] = @DocumentNumber, [FileNumber] = @FileNumber, [FondId] = @FondId, [InventoryNumber] = @InventoryNumber, [Language] = @Language, [TimeInterval] = @TimeInterval  WHERE [Id] = @Id"; } }
 
 			public override bool Equals(object other)
 			{
@@ -45,16 +89,13 @@ namespace Emigrace.Core.Database.Generated
 				if (Id != entity.Id) {
 					return false;
 				}
-				if (ArchiveId != entity.ArchiveId) {
-					return false;
-				}
-				if (FondNumber != entity.FondNumber) {
-					return false;
-				}
-				if (FondName != entity.FondName) {
+				if (FondId != entity.FondId) {
 					return false;
 				}
 				if (InventoryNumber != entity.InventoryNumber) {
+					return false;
+				}
+				if (FileNumber != entity.FileNumber) {
 					return false;
 				}
 				if (DocumentNumber != entity.DocumentNumber) {
@@ -74,13 +115,62 @@ namespace Emigrace.Core.Database.Generated
 				unchecked {
 					const int randomPrime = 397;
 					int hashCode = Id.GetHashCode();
-					hashCode = (hashCode*randomPrime) ^ ArchiveId.GetHashCode();
-					hashCode = (hashCode*randomPrime) ^ (FondNumber != null ? FondNumber.GetHashCode() : 0);
-					hashCode = (hashCode*randomPrime) ^ (FondName != null ? FondName.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ FondId.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ (InventoryNumber != null ? InventoryNumber.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ (FileNumber != null ? FileNumber.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ DocumentNumber.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ (TimeInterval != null ? TimeInterval.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (Language != null ? Language.GetHashCode() : 0);
+					return hashCode;
+				}
+			}
+		}
+		
+		public partial class ArchivalFond : TableEntity
+		{
+			public string FondNumber { get; set; }
+			public string FondName { get; set; }
+			public long ArchiveId { get; set; }
+			public override long Id { get; set; }
+
+			internal override void EntitySetId(long id) {  Id = id; }
+			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalFonds([ArchiveId], [FondName], [FondNumber]) VALUES (@ArchiveId, @FondName, @FondNumber)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalFonds SET [ArchiveId] = @ArchiveId, [FondName] = @FondName, [FondNumber] = @FondNumber  WHERE [Id] = @Id"; } }
+
+			public override bool Equals(object other)
+			{
+				if (ReferenceEquals(this, other)) {
+					return true;
+				}
+
+				var entity = other as ArchivalFond;
+				if (entity == null) {
+					return false;
+				}
+
+				if (Id != entity.Id) {
+					return false;
+				}
+				if (FondNumber != entity.FondNumber) {
+					return false;
+				}
+				if (FondName != entity.FondName) {
+					return false;
+				}
+				if (ArchiveId != entity.ArchiveId) {
+					return false;
+				}
+				return true;
+			}
+
+			public override int GetHashCode()
+			{
+				unchecked {
+					const int randomPrime = 397;
+					int hashCode = Id.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ (FondNumber != null ? FondNumber.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ (FondName != null ? FondName.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ ArchiveId.GetHashCode();
 					return hashCode;
 				}
 			}
@@ -141,6 +231,51 @@ namespace Emigrace.Core.Database.Generated
 					hashCode = (hashCode*randomPrime) ^ (Country != null ? Country.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (Phone != null ? Phone.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (WebPages != null ? WebPages.GetHashCode() : 0);
+					return hashCode;
+				}
+			}
+		}
+		
+		public partial class BookPage : TableEntity
+		{
+			public long BookId { get; set; }
+			public string PhotoNumber { get; set; }
+			public override long Id { get; set; }
+
+			internal override void EntitySetId(long id) {  Id = id; }
+			internal override string EntityInsertSql { get { return "INSERT INTO BookPages([BookId], [PhotoNumber]) VALUES (@BookId, @PhotoNumber)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE BookPages SET [BookId] = @BookId, [PhotoNumber] = @PhotoNumber  WHERE [Id] = @Id"; } }
+
+			public override bool Equals(object other)
+			{
+				if (ReferenceEquals(this, other)) {
+					return true;
+				}
+
+				var entity = other as BookPage;
+				if (entity == null) {
+					return false;
+				}
+
+				if (Id != entity.Id) {
+					return false;
+				}
+				if (BookId != entity.BookId) {
+					return false;
+				}
+				if (PhotoNumber != entity.PhotoNumber) {
+					return false;
+				}
+				return true;
+			}
+
+			public override int GetHashCode()
+			{
+				unchecked {
+					const int randomPrime = 397;
+					int hashCode = Id.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ BookId.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ (PhotoNumber != null ? PhotoNumber.GetHashCode() : 0);
 					return hashCode;
 				}
 			}
