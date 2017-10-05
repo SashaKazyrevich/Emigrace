@@ -67,13 +67,12 @@ namespace Emigrace.Core.Database.Generated
 			public int? InventoryNumber { get; set; }
 			public int? FileNumber { get; set; }
 			public int DocumentNumber { get; set; }
-			public string TimeInterval { get; set; }
 			public string Language { get; set; }
 			public override long Id { get; set; }
 
 			internal override void EntitySetId(long id) {  Id = id; }
-			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalDocuments([DocumentNumber], [FileNumber], [FondId], [InventoryNumber], [Language], [TimeInterval]) VALUES (@DocumentNumber, @FileNumber, @FondId, @InventoryNumber, @Language, @TimeInterval)";} }
-			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalDocuments SET [DocumentNumber] = @DocumentNumber, [FileNumber] = @FileNumber, [FondId] = @FondId, [InventoryNumber] = @InventoryNumber, [Language] = @Language, [TimeInterval] = @TimeInterval  WHERE [Id] = @Id"; } }
+			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalDocuments([DocumentNumber], [FileNumber], [FondId], [InventoryNumber], [Language]) VALUES (@DocumentNumber, @FileNumber, @FondId, @InventoryNumber, @Language)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalDocuments SET [DocumentNumber] = @DocumentNumber, [FileNumber] = @FileNumber, [FondId] = @FondId, [InventoryNumber] = @InventoryNumber, [Language] = @Language  WHERE [Id] = @Id"; } }
 
 			public override bool Equals(object other)
 			{
@@ -101,9 +100,6 @@ namespace Emigrace.Core.Database.Generated
 				if (DocumentNumber != entity.DocumentNumber) {
 					return false;
 				}
-				if (TimeInterval != entity.TimeInterval) {
-					return false;
-				}
 				if (Language != entity.Language) {
 					return false;
 				}
@@ -119,7 +115,6 @@ namespace Emigrace.Core.Database.Generated
 					hashCode = (hashCode*randomPrime) ^ (InventoryNumber != null ? InventoryNumber.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (FileNumber != null ? FileNumber.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ DocumentNumber.GetHashCode();
-					hashCode = (hashCode*randomPrime) ^ (TimeInterval != null ? TimeInterval.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (Language != null ? Language.GetHashCode() : 0);
 					return hashCode;
 				}
@@ -131,11 +126,12 @@ namespace Emigrace.Core.Database.Generated
 			public string FondNumber { get; set; }
 			public string FondName { get; set; }
 			public long ArchiveId { get; set; }
+			public string TimeInterval { get; set; }
 			public override long Id { get; set; }
 
 			internal override void EntitySetId(long id) {  Id = id; }
-			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalFonds([ArchiveId], [FondName], [FondNumber]) VALUES (@ArchiveId, @FondName, @FondNumber)";} }
-			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalFonds SET [ArchiveId] = @ArchiveId, [FondName] = @FondName, [FondNumber] = @FondNumber  WHERE [Id] = @Id"; } }
+			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalFonds([ArchiveId], [FondName], [FondNumber], [TimeInterval]) VALUES (@ArchiveId, @FondName, @FondNumber, @TimeInterval)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalFonds SET [ArchiveId] = @ArchiveId, [FondName] = @FondName, [FondNumber] = @FondNumber, [TimeInterval] = @TimeInterval  WHERE [Id] = @Id"; } }
 
 			public override bool Equals(object other)
 			{
@@ -160,6 +156,9 @@ namespace Emigrace.Core.Database.Generated
 				if (ArchiveId != entity.ArchiveId) {
 					return false;
 				}
+				if (TimeInterval != entity.TimeInterval) {
+					return false;
+				}
 				return true;
 			}
 
@@ -171,6 +170,7 @@ namespace Emigrace.Core.Database.Generated
 					hashCode = (hashCode*randomPrime) ^ (FondNumber != null ? FondNumber.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ (FondName != null ? FondName.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ ArchiveId.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ (TimeInterval != null ? TimeInterval.GetHashCode() : 0);
 					return hashCode;
 				}
 			}
