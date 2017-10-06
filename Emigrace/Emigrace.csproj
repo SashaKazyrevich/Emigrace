@@ -181,6 +181,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ArchivalDocumentViewModel.cs" />
+    <Compile Include="Models\ArchivalFondViewModel.cs" />
     <Compile Include="Models\ArchiveViewModel.cs" />
     <Compile Include="Models\Dropdown.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -205,6 +206,7 @@
       <DependentUpon>Resource.ru.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\ArchiveService.cs" />
+    <Compile Include="Services\FondService.cs" />
     <Compile Include="Services\LibraryService.cs" />
     <Compile Include="Services\SourceService.cs" />
     <Compile Include="Startup.cs" />

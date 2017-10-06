@@ -28,7 +28,7 @@ namespace Emigrace.Services
         public ArchiveViewModel ShowArchive(int id)
         {
             var query = @"
-                SELECT
+               SELECT
                     arch.Id,
                     arch.Name,
                     arch.Adress,
@@ -41,5 +41,7 @@ namespace Emigrace.Services
 
             return new Repository().SelectAdHoc<ArchiveViewModel>(query, new { id }).SingleOrDefault();
         }
+
+       
     }
 }

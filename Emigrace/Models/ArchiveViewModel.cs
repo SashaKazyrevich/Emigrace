@@ -22,5 +22,9 @@ namespace Emigrace.Models
 
         public string WebPages { get; set; }
 
+        public List<ArchivalFondViewModel> Fonds { get; set; } = new List<ArchivalFondViewModel>();
+        
+
+
     }
 }

@@ -36,7 +36,7 @@
                 <caption>Collections</caption>
                 <colgroup>
                     <col style="width:10%" />
-                    <col style="width:40%" />
+                    <col style="width:50%" />
                     <col style="width:30%" />
                     <col style="width:30%" />
                 </colgroup>
@@ -49,13 +49,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var item in Model.Fonds)
+                    {
                     <tr class="collection-row">
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th scope="col">1</th>
+                        <th scope="col">@item.FondName</th>
+                        <th scope="col">@item.FondNumber</th>
+                        <th scope="col">@item.TimeInterval</th>
                     </tr>
+                    }
                 </tbody>
             </table>
            
