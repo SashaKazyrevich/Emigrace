@@ -31,15 +31,27 @@ BEGIN
 END
 GO
 
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'FondInventories')
+BEGIN
+	PRINT 'Create FondInventories table'
+	CREATE TABLE [dbo].[FondInventories] (
+		Id BIGINT CONSTRAINT PK_FondInventories_Id PRIMARY KEY IDENTITY(1,1) NOT NULL,         
+		FondId BIGINT NOT NULL,
+	        CONSTRAINT FK_FondInventories_FondId FOREIGN KEY(FondId) REFERENCES ArchivalFonds(Id),
+		InventoryNumber int NOT NULL
+	)
+END
+GO
+
+
 
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'ArchivalDocuments')
 BEGIN
 	PRINT 'Create ArchivalDocuments table'
 	CREATE TABLE [dbo].[ArchivalDocuments] (
 		Id BIGINT CONSTRAINT PK_ArchivalDocuments_Id PRIMARY KEY IDENTITY(1,1) NOT NULL,         
-		FondId BIGINT NOT NULL,
-	        CONSTRAINT FK_ArchivalDocuments_FondId FOREIGN KEY(FondId) REFERENCES ArchivalFonds(Id),
-		InventoryNumber int NULL,
+		InventoryId BIGINT NOT NULL,
+	        CONSTRAINT FK_FondInventories_InventoryId FOREIGN KEY(InventoryId) REFERENCES FondInventories(Id),
 		FileNumber int NULL,
 		DocumentNumber int NOT NULL,                         
 		Language CHAR(10) NULL 

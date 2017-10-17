@@ -33,7 +33,7 @@ namespace Emigrace.Controllers
             return View();
         }
 
-        public ActionResult ShowArchivePage(int id)
+        public ViewResult ShowArchivePage(int id)
         {
             var archive = new ArchiveService().ShowArchive(id);
             archive.Fonds = new FondService().ShowFonds(id);
@@ -43,6 +43,12 @@ namespace Emigrace.Controllers
         //{
         //    return View();
         //}
+
+        public JsonResult ShowInventoryList (int fondId)
+        {
+            var inventoryList = new InventoryService.ShowInventory(fondId);
+            return Json(new {inventoryList});
+        }
     }
 
 }

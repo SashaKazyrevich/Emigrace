@@ -53,7 +53,9 @@
                     {
                     <tr class="collection-row">
                         <th scope="col">1</th>
-                        <th scope="col">@item.FondName</th>
+                        <th scope="col">
+                        @Html.ActionLink(item.FondName, "ShowInventoryList", "Archives",new { @class="ajaxlink"})
+                        </th>
                         <th scope="col">@item.FondNumber</th>
                         <th scope="col">@item.TimeInterval</th>
                     </tr>

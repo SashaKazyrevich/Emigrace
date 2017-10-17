@@ -63,16 +63,15 @@ namespace Emigrace.Core.Database.Generated
 		
 		public partial class ArchivalDocument : TableEntity
 		{
-			public long FondId { get; set; }
-			public int? InventoryNumber { get; set; }
+			public long InventoryId { get; set; }
 			public int? FileNumber { get; set; }
 			public int DocumentNumber { get; set; }
 			public string Language { get; set; }
 			public override long Id { get; set; }
 
 			internal override void EntitySetId(long id) {  Id = id; }
-			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalDocuments([DocumentNumber], [FileNumber], [FondId], [InventoryNumber], [Language]) VALUES (@DocumentNumber, @FileNumber, @FondId, @InventoryNumber, @Language)";} }
-			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalDocuments SET [DocumentNumber] = @DocumentNumber, [FileNumber] = @FileNumber, [FondId] = @FondId, [InventoryNumber] = @InventoryNumber, [Language] = @Language  WHERE [Id] = @Id"; } }
+			internal override string EntityInsertSql { get { return "INSERT INTO ArchivalDocuments([DocumentNumber], [FileNumber], [InventoryId], [Language]) VALUES (@DocumentNumber, @FileNumber, @InventoryId, @Language)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE ArchivalDocuments SET [DocumentNumber] = @DocumentNumber, [FileNumber] = @FileNumber, [InventoryId] = @InventoryId, [Language] = @Language  WHERE [Id] = @Id"; } }
 
 			public override bool Equals(object other)
 			{
@@ -88,10 +87,7 @@ namespace Emigrace.Core.Database.Generated
 				if (Id != entity.Id) {
 					return false;
 				}
-				if (FondId != entity.FondId) {
-					return false;
-				}
-				if (InventoryNumber != entity.InventoryNumber) {
+				if (InventoryId != entity.InventoryId) {
 					return false;
 				}
 				if (FileNumber != entity.FileNumber) {
@@ -111,8 +107,7 @@ namespace Emigrace.Core.Database.Generated
 				unchecked {
 					const int randomPrime = 397;
 					int hashCode = Id.GetHashCode();
-					hashCode = (hashCode*randomPrime) ^ FondId.GetHashCode();
-					hashCode = (hashCode*randomPrime) ^ (InventoryNumber != null ? InventoryNumber.GetHashCode() : 0);
+					hashCode = (hashCode*randomPrime) ^ InventoryId.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ (FileNumber != null ? FileNumber.GetHashCode() : 0);
 					hashCode = (hashCode*randomPrime) ^ DocumentNumber.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ (Language != null ? Language.GetHashCode() : 0);
@@ -516,6 +511,51 @@ namespace Emigrace.Core.Database.Generated
 					const int randomPrime = 397;
 					int hashCode = Id.GetHashCode();
 					hashCode = (hashCode*randomPrime) ^ (Name != null ? Name.GetHashCode() : 0);
+					return hashCode;
+				}
+			}
+		}
+		
+		public partial class FondInventory : TableEntity
+		{
+			public long FondId { get; set; }
+			public int InventoryNumber { get; set; }
+			public override long Id { get; set; }
+
+			internal override void EntitySetId(long id) {  Id = id; }
+			internal override string EntityInsertSql { get { return "INSERT INTO FondInventories([FondId], [InventoryNumber]) VALUES (@FondId, @InventoryNumber)";} }
+			internal override string EntityUpdateSql {  get { return "UPDATE FondInventories SET [FondId] = @FondId, [InventoryNumber] = @InventoryNumber  WHERE [Id] = @Id"; } }
+
+			public override bool Equals(object other)
+			{
+				if (ReferenceEquals(this, other)) {
+					return true;
+				}
+
+				var entity = other as FondInventory;
+				if (entity == null) {
+					return false;
+				}
+
+				if (Id != entity.Id) {
+					return false;
+				}
+				if (FondId != entity.FondId) {
+					return false;
+				}
+				if (InventoryNumber != entity.InventoryNumber) {
+					return false;
+				}
+				return true;
+			}
+
+			public override int GetHashCode()
+			{
+				unchecked {
+					const int randomPrime = 397;
+					int hashCode = Id.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ FondId.GetHashCode();
+					hashCode = (hashCode*randomPrime) ^ InventoryNumber.GetHashCode();
 					return hashCode;
 				}
 			}
