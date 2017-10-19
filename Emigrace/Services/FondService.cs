@@ -17,6 +17,7 @@ namespace Emigrace.Services
             var query = @"
                 SELECT
                     arfo.FondName,
+                    arfo.Id,
                     arfo.FondNumber,
                     arfo.TimeInterval
                 FROM ArchivalFonds arfo

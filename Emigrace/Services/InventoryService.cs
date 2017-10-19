@@ -10,20 +10,20 @@ namespace Emigrace.Services
     public class InventoryService
     {
 
-        public List<InventoryViewModel> ShowInventory(int id)
+        public List<InventoryViewModel> ShowInventory(int fondId)
         {
             var query = @"
                 SELECT
-                    foin
+                    foin.InventoryNumber 
                 FROM FondInventories foin
                 inner join ArchivalFonds on
                     foin.FondId = ArchivalFonds.Id
-                WHERE foin.FondId = @id
+                WHERE foin.FondId = @fondId
                
             ";
 
 
-            return new Repository().SelectAdHoc<ArchivalFondViewModel>(query, new { id }).ToList();
+            return new Repository().SelectAdHoc<InventoryViewModel>(query, new { fondId }).ToList();
         }
     }
 }

@@ -27,8 +27,8 @@ namespace Emigrace
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/javascripts").Include(
-                      "~/Content/javascripts/script.js"
+            bundles.Add(new ScriptBundle("~/bundles/javascript").Include(
+                      "~/Content/script.js"
                       ));
         }
     }

@@ -44,10 +44,10 @@ namespace Emigrace.Controllers
         //    return View();
         //}
 
-        public JsonResult ShowInventoryList (int fondId)
+        public PartialViewResult ShowInventoryList (int fondId)
         {
-            var inventoryList = new InventoryService.ShowInventory(fondId);
-            return Json(new {inventoryList});
+            var inventoryList = new InventoryService().ShowInventory(fondId);
+            return PartialView("_Inventories",new {inventoryList});
         }
     }
 
